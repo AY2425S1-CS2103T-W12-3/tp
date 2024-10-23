@@ -29,33 +29,34 @@ public class TypicalPersons {
             .withEmail("alice@example.com")
             .withPhone("94351253")
             .withTelegramHandle("@alicepauline")
-            .withTags("friends").withContactType("Work").build();
+            .withTags("friends").withContactType("Work").withRemark("likes cats").build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withTelegramHandle("@bensonmeier")
-            .withTags("owesMoney", "friends").withContactType("Work").build();
+            .withTags("owesMoney", "friends").withContactType("Work").withRemark("lives alone").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@example.com").withTelegramHandle("@carlkurz").withContactType("Work").build();
+            .withEmail("heinz@example.com").withTelegramHandle("@carlkurz").withContactType("Work")
+            .withRemark("likes to garden").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withTelegramHandle("@danielmeier").withTags("friends")
-            .withContactType("Personal").build();
+            .withContactType("Personal").withRemark("good teamwork").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withTelegramHandle("@ellemeyer")
-            .withContactType("Personal").build();
+            .withContactType("Personal").withRemark("owes me money").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withTelegramHandle("@fionakunz")
-            .withContactType("Personal").build();
+            .withContactType("Personal").withRemark("hates lizards").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withTelegramHandle("@georgebest")
-            .withContactType("Personal").build();
+            .withContactType("Personal").withRemark("has a brother").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
             .withEmail("stefan@example.com").withTelegramHandle("@hoonmeier")
-            .withContactType("Work").build();
+            .withContactType("Work").withRemark("can cook well").build();
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
             .withEmail("hans@example.com").withTelegramHandle("@idamueller")
-            .withContactType("Work").build();
+            .withContactType("Work").withRemark("watches many movies").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
