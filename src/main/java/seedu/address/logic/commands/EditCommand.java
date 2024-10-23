@@ -41,10 +41,10 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_TELEHANDLE + "TELEHANDLE] "
-            + "[" + PREFIX_TAG + "TAG]..."
-            + "[" + PREFIX_REMARK + "REMARK]\n"
+            + "[" + PREFIX_REMARK + "REMARK]"
+            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TELEHANDLE + "@johndoe"
+            + PREFIX_TELEHANDLE + "@johndoe "
             + PREFIX_EMAIL + "johndoe@example.com";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
@@ -101,7 +101,7 @@ public class EditCommand extends Command {
         TelegramHandle updatedTelegramHandle = editPersonDescriptor.getTelegramHandle()
                 .orElse(personToEdit.getTelegramHandle());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        Remark updatedRemark = personToEdit.getRemark();
+        Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
         return new Person(updatedContactType, updatedName, updatedPhone, updatedEmail, updatedTelegramHandle,
                 updatedTags, updatedRemark);
     }
@@ -140,6 +140,7 @@ public class EditCommand extends Command {
         private Email email;
         private TelegramHandle telegramHandle;
         private Set<Tag> tags;
+        private Remark remark;
 
         public EditPersonDescriptor() {}
 
@@ -153,13 +154,14 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setTelegramHandle(toCopy.telegramHandle);
             setTags(toCopy.tags);
+            setRemark(toCopy.remark);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, telegramHandle, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, telegramHandle, remark, tags);
         }
 
         public void setName(Name name) {
@@ -211,6 +213,14 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        public void setRemark(Remark remark) {
+            this.remark = remark;
+        }
+
+        public Optional<Remark> getRemark() {
+            return Optional.ofNullable(remark);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -227,7 +237,8 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(telegramHandle, otherEditPersonDescriptor.telegramHandle)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(tags, otherEditPersonDescriptor.tags)
+                    && Objects.equals(remark, otherEditPersonDescriptor.remark);
         }
 
         @Override
@@ -238,6 +249,7 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("telegramHandle", telegramHandle)
                     .add("tags", tags)
+                    .add("remark", remark)
                     .toString();
         }
     }
