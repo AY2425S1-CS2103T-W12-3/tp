@@ -17,7 +17,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
 import seedu.address.model.person.TelegramHandle;
-
 import seedu.address.model.tag.Tag;
 
 /**
@@ -130,7 +129,8 @@ class JsonAdaptedPerson {
         }
         final Remark modelRemark = new Remark(remark);
 
-        return new Person(modelContactType, modelName, modelPhone, modelEmail, modelTelegramHandle, modelTags, modelRemark);
+        return new Person(modelContactType, modelName, modelPhone, modelEmail, modelTelegramHandle,
+                modelTags, modelRemark);
 
     }
 
