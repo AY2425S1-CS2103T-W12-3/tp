@@ -1,6 +1,7 @@
 package seedu.address.testutil;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.model.person.ContactType;
@@ -27,8 +28,8 @@ public class PersonBuilder {
 
     private ContactType contactType;
     private Name name;
-    private Phone phone;
-    private Email email;
+    private Optional<Phone> phone;
+    private Optional<Email> email;
     private TelegramHandle telegramHandle;
     private Set<Tag> tags;
     private Remark remark;
@@ -39,8 +40,8 @@ public class PersonBuilder {
     public PersonBuilder() {
         contactType = new ContactType(DEFAULT_CONTACTTYPE);
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
-        email = new Email(DEFAULT_EMAIL);
+        phone = Optional.of(new Phone(DEFAULT_PHONE));
+        email = Optional.of(new Email(DEFAULT_EMAIL));
         telegramHandle = new TelegramHandle(DEFAULT_TELEHANDLE);
         tags = new HashSet<>();
     }
@@ -84,7 +85,7 @@ public class PersonBuilder {
      * Sets the {@code Phone} of the {@code Person} that we are building.
      */
     public PersonBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+        this.phone = (phone == null || phone.isEmpty()) ? Optional.empty() : Optional.of(new Phone(phone));
         return this;
     }
 
@@ -92,7 +93,7 @@ public class PersonBuilder {
      * Sets the {@code Email} of the {@code Person} that we are building.
      */
     public PersonBuilder withEmail(String email) {
-        this.email = new Email(email);
+        this.email = (email == null || email.isEmpty()) ? Optional.empty() : Optional.of(new Email(email));
         return this;
     }
 
