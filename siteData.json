@@ -122,7 +122,7 @@
         "listing-all-persons-list": "Listing all persons : list",
         "editing-a-person-edit": "Editing a person : edit",
         "finding-persons-by-name-find": "Finding persons by name : find",
-        "finding-persons-by-telegram-handle-findtele": "Finding persons by telegram handle : findtele",
+        "finding-persons-by-telegram-handle-findtele": "Finding persons by Telegram Handle : findtele",
         "finding-persons-by-tags-findtag": "Finding persons by tags : findtag",
         "filtering-persons-by-contact-type-filter": "Filtering persons by contact type : filter",
         "deleting-a-person-delete": "Deleting a person : delete",
